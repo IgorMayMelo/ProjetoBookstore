@@ -1,4 +1,5 @@
-using Meu_Bookstore.Models;
+
+using Meu_Bookstore.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 

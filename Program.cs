@@ -1,3 +1,6 @@
+using Meu_Bookstore.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace Meu_Bookstore
 {
     public class Program
@@ -9,7 +12,22 @@ namespace Meu_Bookstore
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
-            var app = builder.Build();
+			builder.Services.AddDbContext<BookstoreContext>(options =>
+			{
+				options.UseMySql(
+					builder
+						.Configuration
+						.GetConnectionString("BookstoreContext"),
+					ServerVersion
+						.AutoDetect(
+							builder
+								.Configuration
+								.GetConnectionString("BookstoreContext")
+						)
+				);
+			});
+
+			var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
