@@ -1,4 +1,5 @@
 using Meu_Bookstore.Data;
+using Meu_Bookstore.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace Meu_Bookstore
@@ -11,6 +12,8 @@ namespace Meu_Bookstore
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            
 
 			builder.Services.AddDbContext<BookstoreContext>(options =>
 			{
@@ -26,6 +29,8 @@ namespace Meu_Bookstore
 						)
 				);
 			});
+
+            builder.Services.AddScoped<GenreService>();
 
 			var app = builder.Build();
 
