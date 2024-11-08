@@ -33,7 +33,9 @@ namespace Meu_Bookstore.Controllers
                 return View();
             }
 
-            return RedirectToAction("Index");
+            _service.Insert(genre);
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }

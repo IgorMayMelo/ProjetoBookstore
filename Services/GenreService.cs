@@ -17,5 +17,11 @@ namespace Meu_Bookstore.Services
 		{
 			return _context.Genres.ToList();
 		}
+
+		public void Insert(Genre genre) 
+		{
+			_context.Add(genre);
+			_context.SaveChanges();
+		}
 	}
 }
