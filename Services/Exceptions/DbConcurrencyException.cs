@@ -1,8 +1,8 @@
 ﻿namespace Meu_Bookstore.Services.Exceptions
 {
-    public class DbConcorrencyException : ApplicationException
+    public class DbConcurrencyException : ApplicationException
     {
-        public DbConcorrencyException(string? message) : base(message)
+        public DbConcurrencyException(string? message) : base(message)
         {
         }
     }

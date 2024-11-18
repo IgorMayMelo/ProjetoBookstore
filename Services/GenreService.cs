@@ -62,7 +62,7 @@ namespace Meu_Bookstore.Services
 
 			catch (DbUpdateConcurrencyException ex)
 			{
-				throw new DbConcorrencyException(ex.Message);
+				throw new DbConcurrencyException(ex.Message);
 			}
 		}
 	}
