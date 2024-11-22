@@ -31,7 +31,7 @@ namespace Meu_Bookstore.Models
         {
 
         }
-        public Book(int id, string title, string author,double price, int releaseYear)
+        public Book(int id, string title, double price, string author, int releaseYear)
         {
             Id = id;
             Title = title;
