@@ -1,4 +1,5 @@
 using Meu_Bookstore.Data;
+using Meu_Bookstore.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace Meu_Bookstore
@@ -11,6 +12,8 @@ namespace Meu_Bookstore
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            
 
 			builder.Services.AddDbContext<BookstoreContext>(options =>
 			{
@@ -27,7 +30,11 @@ namespace Meu_Bookstore
 				);
 			});
 
-			var app = builder.Build();
+            builder.Services.AddScoped<GenreService>();
+            builder.Services.AddScoped<SeedingService>();
+
+
+            var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
@@ -36,6 +43,12 @@ namespace Meu_Bookstore
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            else 
+            {
+                // Criamos um escopo de execução nos serviços, usamos o GetRequiredService para selecionar o serviço a ser executado e selecionamos o método Seed().
+                app.Services.CreateScope().ServiceProvider.GetRequiredService<SeedingService>().Seed();
+            }
+            
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
