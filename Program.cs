@@ -32,7 +32,7 @@ namespace Meu_Bookstore
 
             builder.Services.AddScoped<GenreService>();
             builder.Services.AddScoped<SeedingService>();
-
+            builder.Services.AddScoped<BookService>();
 
             var app = builder.Build();
 
